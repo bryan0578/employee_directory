@@ -22,7 +22,7 @@
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body>
+	<body ng-app="MyApp">
 		<!-- Navbar -->
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
@@ -52,46 +52,81 @@
             </div><!-- /.container-fluid -->
         </nav>
 		
-		<div class="container">
-            <form name="employeeInfo" role="form">     
+		<div class="container" ng-controller="DirectoryController" ng-model="directory">
+            <form name="employeeInfo" ng-submit="employeeInfo.$valid && addEmployee()" role="form" novalidate>     
                 <legend>Add an Employee</legend>
                 <fieldset class="form-group">
                     <label for="name">Name:</label>
                     <div class="input-group">
                     	<span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    	<input type="text" class="form-control input-md" id="textinput" name="name" placeholder="Employee Name" required>
+                    	<input type="text" class="form-control input-md" id="textinput" name="name" ng-model="directory.name"
+                    	placeholder="Employee Name" required>
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="office">Office Phone #:</label>
                     <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                    <input type="tel" class="form-control input-md" id="textinput" name="office" placeholder="Office Phone" required>
+                    <input type="tel" class="form-control input-md" id="textinput" name="office" ng-model="directory.office" placeholder="Office Phone" required>
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="cell">Cell Phone #:</label>
                     <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-tablet" aria-hidden="true"></i></span>
-                    <input type="tel" class="form-control input-md" id="textinput" name="cell" placeholder="Cell Phone">
+                    <input type="tel" class="form-control input-md" id="textinput" name="cell" ng-model="directory.cell" placeholder="Cell Phone">
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="email">Email:</label>
                     <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                    <input type="tel" class="form-control input-md" id="textinput" name="email" placeholder="Employee Email" required>
+                    <input type="tel" class="form-control input-md" id="textinput" name="email" ng-model="directory.email" placeholder="Employee Email" required>
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="twitter">Twitter:</label>
                     <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-twitter" aria-hidden="true"></i></span>
-                    <input type="tel" class="form-control input-md" id="textinput" name="twitter" placeholder="@username">
+                    <input type="tel" class="form-control input-md" id="textinput" name="twitter" ng-model="directory.twitter" placeholder="@username">
                     </div>
                 </fieldset>
                 <button type="submit" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> ADD</button>
-          </form>
+        	</form>
+          	<div id="employee">
+            	<h1>Current Employees</h1>
+            	<table class="table table-striped" ng-repeat="employee in employeeArray track by $index">
+                	<thead>
+                    	<tr>
+                        	<th><i class="fa fa-user" aria-hidden="true"></i> {{employee.name}}'s Contact Info</th>
+                        	<th><p>  </p></th>
+                    	</tr>
+
+                	</thead>
+                	<tbody>
+                    	<tr>
+                        	<td><strong>Office Phone:</strong></td>
+                        	<td><i class="fa fa-phone" aria-hidden="true"></i> {{employee.office}}</td>
+                    	</tr>
+                    	<tr>
+                        	<td><strong>Cell Phone:</strong></td>
+                        	<td><i class="fa fa-tablet" aria-hidden="true"></i> {{employee.cell}}</td>
+                    	</tr>
+                    	<tr>
+                        	<td><strong>Email:</strong></td>
+                        	<td><i class="fa fa-envelope" aria-hidden="true"></i> {{employee.email}}</td>
+                    	</tr>
+                    	<tr>
+                        	<td><strong>Twitter:</strong></td>
+                        	<td><i class="fa fa-twitter" aria-hidden="true"></i> {{employee.twitter}}</td>
+                    	</tr>
+                    	<tr>
+                        	<td><button ng-click="deleteEmployee(employee)" class="btn btn-danger">DELETE</button></td>
+                        	<td></td>
+                    	</tr>
+                	</tbody>
+            	</table>
+        	</div>
         </div>
 		<!-- jQuery -->
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"   integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>

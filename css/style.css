@@ -1,0 +1,41 @@
+body{
+	font: 16px arial, sans-serif;
+	width:100%;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+}
+
+.navbar-inverse {
+   width:100%;
+    border-radius:0 !important;
+}
+
+.navbar-inverse .navbar-brand{
+    color:#5bc0de;
+}
+
+.navbar-inverse .navbar-brand:hover{
+    color:#428bca;
+}
+
+#employee{
+	width:80%;
+    margin:0 auto;
+}
+
+.ng-invalid.ng-dirty{
+	border-color:#FA787E;
+}
+
+.ng-valid.ng-dirty{
+	border-color:#78FA89;
+}
+
+a{
+    color:#fff;
+}
+
+a:hover{
+    color:#fff;
+    text-decoration: none;
+}
