@@ -14,7 +14,8 @@ I used the Bootstrap CSS framework for a responsive design and Font Awesome for 
 ### Functionality
 The app.js holds the module MyApp as well as the controller to make the app functional and it takes in the dependancy of the dataService.js file which is where the array of employees and the functions to print, add, and delete reside.
 
-
+### See it in action
+Check it out at https://bryan0578.github.io/employee_directory/index.html
 
 
 
